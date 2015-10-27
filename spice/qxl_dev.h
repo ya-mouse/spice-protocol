@@ -748,12 +748,18 @@ typedef struct SPICE_ATTR_PACKED QXLQUICData {
     uint8_t data[0];
 } QXLQUICData, QXLLZRGBData, QXLJPEGData;
 
+typedef struct SPICE_ATTR_PACKED QXLASTData {
+    uint32_t data_size;
+    uint8_t *data;
+} QXLASTData;
+
 typedef struct SPICE_ATTR_PACKED QXLImage {
     QXLImageDescriptor descriptor;
     union { // variable length
         QXLBitmap bitmap;
         QXLQUICData quic;
         QXLSurfaceId surface_image;
+        QXLASTData ast;
     };
 } QXLImage;
 

@@ -47,7 +47,8 @@
 
 #ifdef __GNUC__
 
-#define SPICE_ATTR_PACKED __attribute__ ((__packed__))
+//#define SPICE_ATTR_PACKED __attribute__ ((__packed__))
+#define SPICE_ATTR_PACKED
 
 #ifdef __MINGW32__
 #pragma pack(push,1)
