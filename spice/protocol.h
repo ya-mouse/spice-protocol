@@ -61,8 +61,8 @@ enum {
 
 typedef struct SPICE_ATTR_PACKED SpiceLinkMess {
     uint32_t connection_id;
-    uint8_t channel_type;
-    uint8_t channel_id;
+    uint16_t channel_type;
+    uint16_t channel_id;
     uint32_t num_common_caps;
     uint32_t num_channel_caps;
     uint32_t caps_offset;
@@ -86,23 +86,23 @@ typedef struct SPICE_ATTR_PACKED SpiceLinkAuthMechanism {
 
 typedef struct SPICE_ATTR_PACKED SpiceDataHeader {
     uint64_t serial;
-    uint16_t type;
+    uint32_t type;
     uint32_t size;
     uint32_t sub_list; //offset to SpiceSubMessageList[]
 } SpiceDataHeader;
 
 typedef struct SPICE_ATTR_PACKED SpiceMiniDataHeader {
-    uint16_t type;
+    uint32_t type;
     uint32_t size;
 } SpiceMiniDataHeader;
 
 typedef struct SPICE_ATTR_PACKED SpiceSubMessage {
-    uint16_t type;
+    uint32_t type;
     uint32_t size;
 } SpiceSubMessage;
 
 typedef struct SPICE_ATTR_PACKED SpiceSubMessageList {
-    uint16_t size;
+    uint32_t size;
     uint32_t sub_messages[0]; //offsets to SpicedSubMessage
 } SpiceSubMessageList;
 
