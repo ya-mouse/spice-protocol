@@ -288,6 +288,7 @@ flags8 mask_flags {
 enum8 image_type {
     BITMAP,
     QUIC,
+    AST,
     RESERVED,
     LZ_PLT = 100,
     LZ_RGB,
@@ -435,6 +436,11 @@ struct BinaryData {
     uint8 data[data_size] @nomarshal @chunk;
 } @ctype(SpiceQUICData);
 
+struct ASTData {
+    uint32 data_size;
+    uint8 *data[data_size] @chunk;
+} @ctype(SpiceASTData);
+
 struct LZPLTData {
     bitmap_flags flags;
     uint32 data_size;
@@ -461,6 +467,8 @@ struct Image {
         BitmapData bitmap;
     case QUIC:
         BinaryData quic;
+    case AST:
+        ASTData ast;
     case LZ_RGB:
     case GLZ_RGB:
         BinaryData lz_rgb;
